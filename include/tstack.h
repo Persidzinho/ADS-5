@@ -2,9 +2,38 @@
 #ifndef INCLUDE_TSTACK_H_
 #define INCLUDE_TSTACK_H_
 
-template<typename T, int size>
+template<typename T, int N>
 class TStack {
-  // добавьте код стека
+ private:
+    T arr[N];
+    int topIndex;
+
+ public:
+    TStack() : topIndex(-1) {}
+
+    void push(T value) {
+        if (topIndex < N - 1) {
+            arr[++topIndex] = value;
+        }
+    }
+
+    T pop() {
+        if (topIndex >= 0) {
+            return arr[topIndex--];
+        }
+        return T();
+    }
+
+    T get() const {
+        if (topIndex >= 0) {
+            return arr[topIndex];
+        }
+        return T();
+    }
+
+    bool isEmpty() const {
+        return topIndex == -1;
+    }
 };
 
 #endif  // INCLUDE_TSTACK_H_

@@ -1,10 +1,39 @@
 // Copyright 2021 NNTU-CS
-#ifndef INCLUDE_ALG_H_
-#define INCLUDE_ALG_H_
+#ifndef INCLUDE_TSTACK_H_
+#define INCLUDE_TSTACK_H_
 
-#include <string>
+template<typename T, int Size>
+class TStack {
+ private:
+    T arr[Size];
+    int topIndex;
 
-std::string infx2pstfx(std::string);
-int eval(std::string);
+ public:
+    TStack() : topIndex(-1) {}
 
-#endif  // INCLUDE_ALG_H_
+    void push(T value) {
+        if (topIndex < Size - 1) {
+            arr[++topIndex] = value;
+        }
+    }
+
+    T pop() {
+        if (topIndex >= 0) {
+            return arr[topIndex--];
+        }
+        return T();
+    }
+
+    T get() const {
+        if (topIndex >= 0) {
+            return arr[topIndex];
+        }
+        return T();
+    }
+
+    bool isEmpty() const {
+        return topIndex == -1;
+    }
+};
+
+#endif  // INCLUDE_TSTACK_H_

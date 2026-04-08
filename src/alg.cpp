@@ -17,6 +17,7 @@ std::string infx2pstfx(const std::string& inf) {
         char c = inf[i];
 
         if (c >= '0' && c <= '9') {
+            // cppcheck-suppress knownConditionTrueFalse
             while (i < inf.length() && inf[i] >= '0' && inf[i] <= '9') {
                 result += inf[i];
                 ++i;
@@ -64,6 +65,7 @@ int eval(const std::string& post) {
         char c = post[i];
         if (c >= '0' && c <= '9') {
             int num = 0;
+            // cppcheck-suppress knownConditionTrueFalse
             while (i < post.length() && post[i] >= '0' && post[i] <= '9') {
                 num = num * 10 + (post[i] - '0');
                 ++i;

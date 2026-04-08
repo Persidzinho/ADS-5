@@ -1,5 +1,6 @@
 // Copyright 2025 NNTU-CS
 #include <string>
+#include "alg.h"
 #include "tstack.h"
 
 int getPriority(char op) {
@@ -69,9 +70,11 @@ int eval(const std::string& post) {
             }
             stack.push(num);
             --i;
-        } else if (c == '+' || c == '-' || c == '*'' || c == '/') {
-            int b = stack.get(); stack.pop();
-            int a = stack.get(); stack.pop();
+        } else if (c == '+' || c == '-' || c == '*' || c == '/') {
+            int b = stack.get();
+            stack.pop();
+            int a = stack.get();
+            stack.pop();
             int res = 0;
             if (c == '+') res = a + b;
             else if (c == '-') res = a - b;
